@@ -5,12 +5,13 @@ from django.shortcuts import render
 # from django.http import HttpResponse
 from django.shortcuts import redirect
 from .models import Friend
-from .forms import FriendForm, FindForm
+from .forms import FriendForm, FindForm, CheckForm
 
 def index(request):
     params = {
             'title' : 'Hello',
-            'data' : Friend.objects.all(),
+            'message' : '',
+            'data' : Friend.objects.all().order_by('age'),
         }
     return render(request, 'hello/index.html', params)
 
@@ -65,3 +66,20 @@ def find(request):
             'data' : data,
         }
     return render(request, 'hello/find.html', params)
+
+def check(request):
+    params = {
+            'title' : 'Hello',
+            'message' : 'check validation.',
+            'form' : FriendForm(),
+        }
+    if (request.method == 'POST'):
+        obj = Friend()
+        form = FriendForm(request.POST, instance = obj)
+        params['form'] = form
+        if (form.is_valid()):
+            params['message'] = 'OK!'
+        else:
+            params['message'] = 'no good.'
+    return render (request, 'hello/check.html', params)
+    
