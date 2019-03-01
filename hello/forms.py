@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from .models import Friend
+from .models import Friend, Message
 
 class FriendForm(forms.ModelForm):
     class Meta:
@@ -34,3 +34,8 @@ class CheckForm(forms.Form):
     # date = forms.DateField(label = 'Date', input_formats=['%d'])
     # time = forms.TimeField(label = 'Time')
     # datetime = forms.DateTimeField(label = 'DateTime')
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['title', 'content', 'friend']

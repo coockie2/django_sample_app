@@ -4,8 +4,8 @@ from __future__ import unicode_literals
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 # from django.http import HttpResponse
-from .models import Friend
-from .forms import FriendForm, FindForm
+from .models import Friend, Message
+from .forms import FriendForm, FindForm, MessageForm
 
 def index(request, num = 1):
     data = Friend.objects.all()
@@ -84,4 +84,14 @@ def check(request):
         else:
             params['message'] = 'no good.'
     return render (request, 'hello/check.html', params)
-    
+
+def message(request, page = 1):
+    if (request.method == 'POST'):
+        MessageForm(request.POST, instance = Message()).save()
+    paginator = Paginator(Message.objects.all().reverse(), 5)
+    params = {
+            'title' : 'Message',
+            'form' : MessageForm(),
+            'data' : paginator.get_page(page),
+        }
+    return render(request, 'hello/message.html', params)
