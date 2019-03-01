@@ -5,7 +5,7 @@ from django.shortcuts import render
 # from django.http import HttpResponse
 from django.shortcuts import redirect
 from .models import Friend
-from .forms import HelloForm
+from .forms import FriendForm
 
 def index(request):
     params = {
@@ -15,15 +15,12 @@ def index(request):
     return render(request, 'hello/index.html', params)
 
 def create(request):
+    if (request.method == 'POST'):
+        FriendForm(request.POST, instance = Friend()).save()
+        return redirect(to='hello/')
+
     params = {
             'title' : 'Hello',
-            'form' : HelloForm(),
+            'form' : FriendForm(),
         }
-    if (request.method == 'POST'):
-        Friend(name     = request.POST['name'], \
-               mail     = request.POST['mail'], \
-               gender   = 'gender' in request.POST, \
-               age      = request.POST['age'], \
-               birthday = int(request.POST['birthday'])).save
-        return redirect(to='hello/')
     return render(request, 'hello/create.html', params)
