@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.core.paginator import Paginator
+from django.shortcuts import render, redirect
 # from django.http import HttpResponse
-from django.shortcuts import redirect
 from .models import Friend
-from .forms import FriendForm, FindForm, CheckForm
+from .forms import FriendForm, FindForm
 
-def index(request):
+def index(request, num = 1):
+    data = Friend.objects.all()
+    page = Paginator(data, 3)
     params = {
             'title' : 'Hello',
             'message' : '',
-            'data' : Friend.objects.all().order_by('age'),
+            'data' : page.get_page(num),
         }
     return render(request, 'hello/index.html', params)
 
