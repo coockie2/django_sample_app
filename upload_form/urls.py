@@ -8,5 +8,4 @@ from upload_form import views
 app_name = 'upload_form'
 urlpatterns = [
     path('', views.form, name = 'form'),
-    path('complete/', views.complete, name = 'complete'),
 ]
