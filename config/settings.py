@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'hello',
     'sns',
     'mail',
+    'upload_form',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # mail
+# http://racchai.hatenablog.com/entry/2016/05/06/070000
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'host名'
 EMAIL_PORT = 25
@@ -131,4 +133,5 @@ EMAIL_HOST_PASSWORD = 'パスワード'
 EMAIL_USE_TLS = False
 
 # for email debug settings
+# メール送信せずにログ出力に絞る設定
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
