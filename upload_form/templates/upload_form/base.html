@@ -9,6 +9,14 @@
         <script src="{% static 'upload_form/js/jquery-3.3.1.min.js' %}"></script>
     </head>
     <body>
+        {% if messages %}
+            <ul class="messages" style="padding: 0; margin: 10px">
+                {% for message in messages %}
+                      <li class="{{ message.tags }} list-unstyled">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
         {% block content %}
             {{ content }}
         {% endblock %}
