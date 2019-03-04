@@ -1,5 +1,5 @@
 from django.urls import path
-from sns.views import index, groups, add, creategroup, post, share, good
+from .views import index, groups, add, creategroup, post, share, good
 
 urlpatterns = [
     path('', index.index, name='index'),

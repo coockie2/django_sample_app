@@ -17,7 +17,10 @@ from django.conf.urls import include
 from django.urls import path
 from django.contrib import admin
 
+from home import views
+
 urlpatterns = [
+    path('', views.index, name="home"),
     path('admin/', admin.site.urls),
     path('hello/', include('hello.urls')),
     path('sns/', include('sns.urls')),
