@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', include('hello.urls')),
     path('sns/', include('sns.urls')),
+    path('mail/', include('mail.urls')), #"追加"
 ]
