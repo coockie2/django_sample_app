@@ -2,9 +2,20 @@
 
 {% block title %}アップローダサンプル{% endblock title %}
 {% block content %}
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="file">
-        <input type="submit" value="アップロード">
-    </form>
+    <div style="margin: 10px">
+        <p>読み込みファイルを選択してください。</p>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        ファイル選択<input type="file" name="file" style="display:none">
+                    </span>
+                </label>
+                <input type="text" class="form-control" readonly="">
+            </div>
+    
+            <button type="submit" class="btn btn-primary">アップロード</button>
+        </form>
+    </div>
 {% endblock content %}

@@ -1,9 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="content">
         <title>ファイルアップローダ</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'upload_form/css/bootstrap.min.css' %}" />
+        <script src="{% static 'upload_form/js/jquery-3.3.1.min.js' %}"></script>
     </head>
     <body>
         {% block content %}
@@ -11,3 +14,12 @@
         {% endblock %}
     </body>
 </html>
+
+<script>
+    $(document).on('change', ':file', function() {
+        var input = $(this),
+                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.parent().parent().next(':text').val(label);
+    });
+</script>
