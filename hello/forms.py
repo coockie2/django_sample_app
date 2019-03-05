@@ -7,6 +7,11 @@ class FriendForm(forms.ModelForm):
         model = Friend
         fields = ['name', 'mail', 'gender', 'age', 'birthday']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
 class FindForm(forms.Form):
     find = forms.CharField(label = 'find', required = False)
 
@@ -14,11 +19,11 @@ class CheckForm(forms.Form):
     str = forms.CharField(label = 'String')
 
     # バリデーションエラー発生時にエラーメッセージを指定
-    def clean(self):
-        cleaned_data = super().clean()
-        str = cleaned_data['str']
-        if (str.lower().startswith('no')):
-            raise forms.ValidationError('You input "NO"!')
+#    def clean(self):
+#        cleaned_data = super().clean()
+#        str = cleaned_data['str']
+#        if (str.lower().startswith('no')):
+#            raise forms.ValidationError('You input "NO"!')
 
     # 文字列のバリデーション
     # empty = forms.CharField(label = 'Empty', empty_value = True)

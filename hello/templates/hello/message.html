@@ -4,12 +4,12 @@
     <head>
         <meta charset="utf-8">
         <title>{{title}}</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     </head>
     <body>
         <h1>{{title}}</h1>
         <table>
-            <form action="{% url 'message' %}" method="post">
+            <form action="{% url 'hello:message' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_table }}
                 <tr>
@@ -35,10 +35,10 @@
         </table>
         <div class="pagenation">
             {% if data.has_previous %}
-                <a href="{% url 'message' %}/{{data.previous_page_number}}">&laquo;prev</a>
+                <a href="{% url 'hello:message' %}/{{data.previous_page_number}}">&laquo;prev</a>
             {% endif %}
             {% if data.has_next %}
-                <a href="{% url 'message' %}/{{data.next_page_number}}">next&raquo;</a>
+                <a href="{% url 'hello:message' %}/{{data.next_page_number}}">next&raquo;</a>
             {% endif %}
         </div>
     </body>

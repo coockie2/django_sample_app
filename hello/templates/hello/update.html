@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<p>ユーザー情報を変更してください。</p>
+<form action="{% url 'hello:update' friend.id %}" method="post">
+    <div class="form-group">
+        <table class="table">
+            {% csrf_token %}
+            {{ form.as_table }}
+        </table>
+    </div>
+    <button type="submit" class="btn btn-primary">更新</button>
+
+    <input
+        type="button"
+        class="btn btn-primary"
+        onclick="location.href='/hello'"
+        value="戻る">
+</form>
+{% endblock %}

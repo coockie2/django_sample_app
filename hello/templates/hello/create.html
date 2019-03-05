@@ -1,22 +1,18 @@
-{% load static %}
-<!doctype html>
-<html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>{{title}}</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'hello/css/style.css' %}" />
-    </head>
-    <body>
-        <h1>{{title}}</h1>
-        <table>
-            <form action="{% url 'create' %}" method="post">
-                {% csrf_token %}
-                {{ form.as_table }}
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="click"></td>
-                </tr>
-            </form>
-        </table>
-    </body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+<p>ユーザー情報を入力してください。</p>
+<form action="{% url 'hello:create' %}" method="post">
+    <table class="table">
+        {% csrf_token %}
+        {{ form.as_table }}
+    </table>
+
+    <button type="submit" class="btn btn-primary">登録</button>
+
+    <input
+        type="button"
+        class="btn btn-primary"
+        onclick="location.href='/hello'"
+        value="戻る">
+</form>
+{% endblock %}

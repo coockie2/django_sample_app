@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import index, groups, add, creategroup, post, share, good
 
+app_name = 'sns'
 urlpatterns = [
     path('', index.index, name='index'),
     path('groups', groups.groups, name='groups'),
