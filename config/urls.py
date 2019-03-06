@@ -23,5 +23,8 @@ urlpatterns = [
     path('', views.index, name="home"),
     path('admin/', admin.site.urls),
     path('hello/', include('hello.urls')),
+    path('mail/', include('mail.urls')),
+    path('message/', include('message.urls')),
+    path('sns/', include('sns.urls')),
     path('upload_form/', include('upload_form.urls')),
 ]
