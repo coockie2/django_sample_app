@@ -13,6 +13,7 @@ class MessageAssertion(TestCase):
         self.assertEqual(message.content, content)
 
 # Messageモデルをテスト
+# 「python manage.py test」で実行
 class MessageModelTests(TestCase):
     def creating_a_book_and_saving(self, content=None):
         message = Message()
