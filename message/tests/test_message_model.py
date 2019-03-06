@@ -3,6 +3,8 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 
+from django.core.exceptions import ValidationError
+
 from message.models import Message
 
 # アサート専用クラス
@@ -42,8 +44,14 @@ class MessageModelTests(TestCase):
         self.assertEqual(Message.objects.all()[0].content, content)
 
     # contentが空のデータは保存できない
+    def test_is_content_empty_is_error(self):
+        self.assertRaises(ValidationError, lambda: Message().full_clean())
 
     # contentが201文字以上のデータは保存できない
+    def test_is_content_200_over_is_error(self):
+        message = Message()
+        message.content = ('0123456789' * 20) + '0'
+        self.assertRaises(ValidationError, lambda: message.full_clean())
 
     def tearDown(self):
         self.user.delete()

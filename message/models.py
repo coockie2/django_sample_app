@@ -10,7 +10,7 @@ class Message(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     # テーブルの項目を定義
-    content = models.TextField(max_length=1000)
+    content = models.TextField(max_length=200)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

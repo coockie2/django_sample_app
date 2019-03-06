@@ -49,3 +49,5 @@ message/__pycache__/urls.cpython-37.pyc
 upload_form/__pycache__/tests.cpython-37.pyc
 message/tests/__pycache__/__init__.cpython-37.pyc
 message/tests/__pycache__/test_message_model.cpython-37.pyc
+message/migrations/__pycache__/0002_auto_20190306_1122.cpython-37.pyc
+hello/migrations/__pycache__/0003_auto_20190306_1112.cpython-37.pyc
