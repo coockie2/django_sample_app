@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'sns',
     'mail',
     'upload_form',
+    'message',
 ]
 
 MIDDLEWARE = [
