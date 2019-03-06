@@ -67,3 +67,4 @@ sns/views/__pycache__/index.cpython-37.pyc
 sns/views/__pycache__/post.cpython-37.pyc
 mail/__pycache__/views.cpython-37.pyc
 mail/__pycache__/urls.cpython-37.pyc
+db.sqlite3

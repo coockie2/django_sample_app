@@ -1,9 +1,13 @@
+# -*- coding: utf-8 -*-
+
 from django.urls import path
-from . import views
+from hello import views
 
 app_name = 'hello'
 urlpatterns = [
     path('', views.HelloListView.as_view(), name = 'index'),
+    path('pdf/', views.HelloPdfListView.as_view(), name = 'pdf'),
+    path('pdf2/', views.HelloPdf, name = 'pdf'),
     path('detail/<int:pk>', views.HelloDetailView.as_view(), name = 'detail'),
     path('create/', views.HelloCreateView.as_view(), name = 'create'),
     path('update/<int:pk>', views.HelloUpdateView.as_view(), name = 'update'),
