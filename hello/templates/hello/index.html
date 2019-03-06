@@ -38,7 +38,7 @@
     <tbody>
         {% for item in object_list %}
         <tr>
-            <td>{{item.id}}</td>
+            <td><a href="{% url 'hello:detail' item.pk %}">{{item.id}}</a></td>
             <td>{{item.name}}</td>
             <td>{{item.age}}</td>
             <td>{{item.mail}}</td>
@@ -50,8 +50,20 @@
                     {% endfor %}
                 </ul>
             </td>
-            <td><a href="{% url 'hello:update' item.pk %}">Edit</a></td>
-            <td><a href="{% url 'hello:delete' item.pk %}">Delete</a></td>
+            <td>
+                <input
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="location.href='{% url 'hello:update' item.pk %}'"
+                    value="編集">
+            </td>
+            <td>
+                <input
+                    type="button"
+                    class="btn btn-danger"
+                    onclick="location.href='{% url 'hello:delete' item.pk %}'"
+                    value="削除">
+            </td>
         </tr>
         {% endfor %}
     </tbody>

@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.core.paginator import Paginator
-from django.shortcuts import render, redirect
-from django.utils import timezone
-
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Friend, Message
-from .forms import FriendForm, FindForm, MessageForm
+from .forms import FriendForm, MessageForm
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Pythonでディレクトリの上層にあるモジュールをimportするときの注意点
 # http://d.hatena.ne.jp/chlere/20110618/1308369842
 
-# 一覧表示
-class HelloListView(ListView):
+# ユーザ一覧
+class HelloListView(LoginRequiredMixin, ListView):
     model = Friend
     template_name = 'hello/index.html'
     paginate_by = 4
@@ -34,7 +32,7 @@ class HelloListView(ListView):
 #        return object_list
 
 # ユーザ登録
-class HelloCreateView(CreateView):
+class HelloCreateView(LoginRequiredMixin, CreateView):
     model = Friend
     form_class = FriendForm
     template_name = "hello/create.html"
@@ -45,8 +43,19 @@ class HelloCreateView(CreateView):
         context["title"] = "ユーザー登録画面"
         return context
 
+# ユーザ詳細
+class HelloDetailView(LoginRequiredMixin, DetailView):
+    model = Friend
+    form_class = FriendForm
+    template_name = "hello/detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "ユーザー詳細画面"
+        return context
+
 # ユーザ編集
-class HelloUpdateView(UpdateView):
+class HelloUpdateView(LoginRequiredMixin, UpdateView):
     model = Friend
     form_class = FriendForm
     template_name = 'hello/update.html'
@@ -58,7 +67,7 @@ class HelloUpdateView(UpdateView):
         return context
 
 # ユーザ削除
-class HelloDeleteView(DeleteView):
+class HelloDeleteView(LoginRequiredMixin, DeleteView):
     model = Friend
     form_class = FriendForm
     template_name = 'hello/delete.html'
@@ -69,30 +78,37 @@ class HelloDeleteView(DeleteView):
         context["title"] = "ユーザー削除画面"
         return context
 
-#def check(request):
-#    params = {
-#            'title' : 'Hello',
-#            'message' : 'check validation.',
-#            'form' : FriendForm(),
-#        }
-#    if (request.method == 'POST'):
-#        obj = Friend()
-#        form = FriendForm(request.POST, instance = obj)
-#        params['form'] = form
-#        if (form.is_valid()):
-#            params['message'] = 'OK!'
-#        else:
-#            params['message'] = 'no good.'
-#    return render (request, 'hello/check.html', params)
+#　メッセージ一覧
+class MessageListView(LoginRequiredMixin, ListView):
+    model = Message
+    template_name = 'hello/message.html'
+    paginate_by = 4
 
-#def message(request, page = 1):
-#    if (request.method == 'POST'):
-#        MessageForm(request.POST, instance = Message()).save()
-#    paginator = Paginator(Message.objects.all().reverse(), 5)
-#    params = {
-#            'title' : 'Message',
-#            'form' : MessageForm(),
-#            'data' : paginator.get_page(page),
-#        }
-#    return render(request, 'hello/message.html', params)
-#
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "メッセージ一覧画面"
+        return context
+
+# メッセージ登録
+class MessageCreateView(LoginRequiredMixin, CreateView):
+    model = Message
+    form_class = MessageForm
+    template_name = 'hello/message.html'
+    success_url = "/hello"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "メッセージ登録画面"
+        return context
+
+# メッセージ詳細
+class MessageDetailView(LoginRequiredMixin, DetailView):
+    model = Message
+    form_class = MessageForm
+    template_name = 'hello/message.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "メッセージ詳細画面"
+        return context
+

@@ -8,7 +8,8 @@ class FriendForm(forms.ModelForm):
         fields = ['name', 'mail', 'gender', 'age', 'birthday']
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(FriendForm, self).__init__(*args, **kwargs)
+        print(self.fields)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
