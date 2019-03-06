@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'mail',
     'upload_form',
     'message',
+    'graph',
 ]
 
 MIDDLEWARE = [

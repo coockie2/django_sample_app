@@ -68,3 +68,9 @@ sns/views/__pycache__/post.cpython-37.pyc
 mail/__pycache__/views.cpython-37.pyc
 mail/__pycache__/urls.cpython-37.pyc
 db.sqlite3
+graph/__pycache__/views.cpython-37.pyc
+graph/__pycache__/__init__.cpython-37.pyc
+graph/__pycache__/admin.cpython-37.pyc
+graph/__pycache__/models.cpython-37.pyc
+graph/__pycache__/urls.cpython-37.pyc
+graph/migrations/__pycache__/__init__.cpython-37.pyc

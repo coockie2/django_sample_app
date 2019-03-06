@@ -27,4 +27,5 @@ urlpatterns = [
     path('message/', include('message.urls')),
     path('sns/', include('sns.urls')),
     path('upload_form/', include('upload_form.urls')),
+    path('graph/', include('graph.urls')),
 ]
