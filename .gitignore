@@ -40,3 +40,12 @@ upload_form/__pycache__/urls.cpython-37.pyc
 upload_form/__pycache__/views.cpython-37.pyc
 upload_form/migrations/__pycache__/0001_initial.cpython-37.pyc
 db.sqlite3
+mail/__pycache__/tests.cpython-37.pyc
+hello/__pycache__/tests.cpython-37.pyc
+home/__pycache__/tests.cpython-37.pyc
+message/__pycache__/views.cpython-37.pyc
+message/__pycache__/tests.cpython-37.pyc
+message/__pycache__/urls.cpython-37.pyc
+upload_form/__pycache__/tests.cpython-37.pyc
+message/tests/__pycache__/__init__.cpython-37.pyc
+message/tests/__pycache__/test_message_model.cpython-37.pyc
