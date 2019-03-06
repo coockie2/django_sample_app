@@ -7,8 +7,7 @@ from django.contrib.auth.models import User
 class Message(models.Model):
 
     # 外部キーの設定
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, \
-                              related_name='message_owner')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     # テーブルの項目を定義
     content = models.TextField(max_length=1000)
