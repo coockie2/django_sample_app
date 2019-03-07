@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.HelloListView.as_view(), name = 'index'),
     path('pdf/', views.HelloPdfListView.as_view(), name = 'pdf'),
     path('pdf2/', views.HelloPdf, name = 'pdf2'),
+    path('pdf3/', views.HelloPdf2, name = 'pdf3'),
     path('detail/<int:pk>', views.HelloDetailView.as_view(), name = 'detail'),
     path('create/', views.HelloCreateView.as_view(), name = 'create'),
     path('update/<int:pk>', views.HelloUpdateView.as_view(), name = 'update'),
