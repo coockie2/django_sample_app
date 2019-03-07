@@ -3,10 +3,13 @@ import io
 import os
 
 from django.conf import settings
+
+from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.template.loader import get_template
+
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.http import HttpResponse
-from django.template.loader import get_template
 
 from xhtml2pdf import pisa
 
@@ -27,7 +30,7 @@ import webbrowser
 class HelloListView(ListView):
     model = Friend
     template_name = 'hello/index.html'
-    paginate_by = 4
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

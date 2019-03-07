@@ -74,3 +74,6 @@ graph/__pycache__/admin.cpython-37.pyc
 graph/__pycache__/models.cpython-37.pyc
 graph/__pycache__/urls.cpython-37.pyc
 graph/migrations/__pycache__/__init__.cpython-37.pyc
+config/settings/__pycache__/develop.cpython-37.pyc
+config/settings/__pycache__/__init__.cpython-37.pyc
+config/settings/__pycache__/base.cpython-37.pyc

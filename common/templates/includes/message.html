@@ -1,0 +1,31 @@
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        {% if message.tags %}
+            <!-- errorだけbootstrapのclass名と合わないためコンバート -->
+            {% if message.tags == 'error' %}
+                <div
+                    style="margin-left: -40px"
+                    class="alert alert-danger alert-dismissible fade show"
+                    role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  {{ message }}
+                </div>
+            {% else %}
+                <div
+                    style="margin-left: -40px"
+                    class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                    role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  {{ message }}
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endif %}
+

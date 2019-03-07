@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Django settings for django_app project.
 
@@ -13,8 +15,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 from django.contrib.messages import constants as message_constants
 
+# [Django] プロジェクト構成のベストプラクティスを探る - ２．設定ファイルを本番用と開発用に分割する
+# https://qiita.com/okoppe8/items/e60d35f55188c0ab9ecc
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -29,7 +34,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,17 +81,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -139,12 +132,3 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = 'ユーザーID'
 EMAIL_HOST_PASSWORD = 'パスワード'
 EMAIL_USE_TLS = False
-
-# for email debug settings
-# メール送信せずにログ出力に絞る設定
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-MESSAGE_TAGS = {
-    message_constants.SUCCESS: 'alert alert-success',
-    message_constants.ERROR: 'alert alert-danger',
-}

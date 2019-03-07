@@ -1,4 +1,13 @@
 {% extends "layout.html" %}
+{% block title %}
+ユーザー一覧
+{% endblock %}
+
+{% block title2 %}
+<h2>ユーザー一覧</h2>
+{% endblock %}
+
+
 {% block content %}
 <!-- 登録ボタン -->
 <div style="padding:3px;">
@@ -20,6 +29,9 @@
 
 <!-- ページネーション -->
 {% include 'includes/pagination.html' %}
+
+<!-- 削除確認ダイアログ -->
+{% include 'includes/delete_dialog.html' %}
 
 <!-- 表 -->
 <table class="table table-condensed table-bordered table-hover">
@@ -53,14 +65,14 @@
             <td>
                 <input
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-primary btn-sm"
                     onclick="location.href='{% url 'hello:update' item.pk %}'"
                     value="編集">
             </td>
             <td>
                 <input
                     type="button"
-                    class="btn btn-danger"
+                    class="btn btn-danger del_confirm btn-sm"
                     onclick="location.href='{% url 'hello:delete' item.pk %}'"
                     value="削除">
             </td>
