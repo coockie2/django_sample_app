@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
+{% block title %}
+ユーザー編集
+{% endblock %}
+
+{% block page_title %}
+ユーザー編集
+{% endblock %}
+
 {% block content %}
 <p>ユーザー情報を変更してください。</p>
 <form action="{% url 'hello:update' friend.id %}" method="post">

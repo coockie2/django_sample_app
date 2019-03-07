@@ -8,6 +8,8 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.template.loader import get_template
 
+from django.contrib import messages
+
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -156,6 +158,8 @@ def HelloPdf(request):
     # pdf 出力
     SampleRender().render()
 
+    messages.success(request, 'PDF(reportLab)の出力に成功しました')
+
     # 画面遷移したくないので強制的に印刷ボタンがあるページに戻る
     return redirect("hello:index")
 
@@ -163,6 +167,7 @@ def HelloPdf2(request):
     # pdf 出力
     ExcelToPdf.export()
 
+    messages.success(request, 'PDF(excel)の出力に成功しました')
+
     # 画面遷移したくないので強制的に印刷ボタンがあるページに戻る
     return redirect("hello:index")
-

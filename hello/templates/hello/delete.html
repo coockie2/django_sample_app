@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
+{% block title %}
+ユーザー削除
+{% endblock %}
+
+{% block page_title %}
+ユーザー削除
+{% endblock %}
+
 {% block content %}
 <p>※以下のレコードを削除します。</p>
 <form action="{% url 'hello:delete' friend.id %}" method="post">

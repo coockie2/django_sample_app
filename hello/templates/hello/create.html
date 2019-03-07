@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
+{% block title %}
+ユーザー作成
+{% endblock %}
+
+{% block page_title %}
+ユーザー作成
+{% endblock %}
+
 {% block content %}
 <p>ユーザー情報を入力してください。</p>
 <form action="{% url 'hello:create' %}" method="post">
