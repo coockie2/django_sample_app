@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import win32com.client
  
+import datetime
 import os.path
 import os
 import pythoncom
@@ -10,12 +11,13 @@ from django.conf import settings
 
 # [PYTHON] EXCELのシートをJPEGに書き出す [EXCEL]
 # http://flame-blaze.net/archives/7014
-class excelToPdf:
+class ExcelToPdf:
 
     @classmethod
     def export(self):
+        self.file_name = 'excel_{0:%Y%m%d%H%M%S}.pdf'.format(datetime.datetime.now())
         self.file_path = os.path.join(settings.BASE_DIR, 'common', 'static/excel/test.xlsx')
-        self.to_path = os.path.join(settings.BASE_DIR, 'common', 'static/pdf/test.pdf')
+        self.to_path = os.path.join(settings.BASE_DIR, 'common', 'static/pdf/' + self.file_name + '.pdf')
 
         pythoncom.CoInitializeEx(pythoncom.COINIT_MULTITHREADED)
         self.o = win32com.client.Dispatch("Excel.Application")
@@ -35,7 +37,7 @@ class excelToPdf:
         self.ws.PageSetup.FitToPagesTall = 1
         # 横方向1ページで印刷
         self.ws.PageSetup.FitToPagesWide = 1
-        self.ws.PageSetup.PrintArea = "A1:C36"
+        self.ws.PageSetup.PrintArea = "A1:C37"
     
         self.wb.WorkSheets([1,2]).Select()
         self.wb.ActiveSheet.ExportAsFixedFormat(0, self.to_path)

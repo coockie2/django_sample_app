@@ -16,7 +16,7 @@ from xhtml2pdf import pisa
 from .models import Friend, Message
 from .forms import FriendForm, MessageForm
 
-from common.utils.pdf.excel_to_pdf import excelToPdf
+from common.utils.pdf.excel_to_pdf import ExcelToPdf
 from hello.utils.pdf.sample_render import SampleRender
 
 # Pythonでディレクトリの上層にあるモジュールをimportするときの注意点
@@ -161,7 +161,7 @@ def HelloPdf(request):
 
 def HelloPdf2(request):
     # pdf 出力
-    excelToPdf.export()
+    ExcelToPdf.export()
 
     # 画面遷移したくないので強制的に印刷ボタンがあるページに戻る
     return redirect("hello:index")
