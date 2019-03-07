@@ -1,0 +1,25 @@
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'hello:index' %}">ユーザー管理</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'sns:index' %}" style="pointer-events: none;">sns</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'mail:index' %}" style="pointer-events: none;">mail</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'message:index' %}">message</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'hello:pdf' %}">pdf(xhtml2pdf)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'hello:pdf2' %}">pdf(reportLab)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'graph:index' %}">graph(matplotlab)</a>
+    </li>
+  </ul>
+</nav>

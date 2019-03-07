@@ -1,11 +1,13 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>hello</title>    
-  </head>
+{% extends "layout.html" %}
+{% block title %}
+グラフ表示（matplotlab）
+{% endblock %}
 
-  <body>
-    <img src="charts/simple.png" alt="">
-  </body>
-</html>
+{% block page_title %}
+グラフ表示（matplotlab）
+{% endblock %}
+
+
+{% block content %}
+<img src="charts/simple.png" alt="">
+{% endblock %}

@@ -3,65 +3,42 @@
     <head>
         <meta charset="utf-8">
         <title>xxx システム|{% block title %}{% endblock %}</title>
+
+        <!-- bootstrap用 -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <style type="text/css">
-            @font-face {
-              font-family: "japanese";
-              src: url("{% static 'fonts/MS Gothic.ttf' %}");
-            }
-            @page {
-              size: A4;
-              font-family: "japanese";
-            }
-            html, body {
-              font-family: "japanese";
-            }
-        </style>
+
+        <!-- 独自CSS -->
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
     </head>
 
     <body>
-        <!-- ナビゲーションバー -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">xxx システム</a>
-        </nav>
+        <!-- ヘッダー -->
+        {% include 'includes/header.html' %}
 
-        <div class="row" style="margin-right: 0px">
-            <!-- サイドメニュー -->
-            <div class="col-3" style="padding-right: 0px">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <a href="{% url 'hello:index' %}">ユーザー管理</a>
-                        </li>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container">
+                    <!-- サイドメニュー -->
+                    {% include 'includes/side_menu.html' %}
 
-                        <li class="list-group-item">
-                            <a href="{% url 'sns:index' %}">SNS</a>
-                        </li>
+                    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+                        <!-- メッセージ -->
+                        {% include 'includes/message.html' %}
 
-                        <li class="list-group-item">
-                            <a href="{% url 'mail:index' %}" style="pointer-events: none;">メール</a>
-                        </li>
+                        <h1>{% block page_title %}{% endblock %}</h1>
 
-                        <li class="list-group-item">
-                            <a href="{% url 'message:index' %}">メッセージ</a>
-                        </li>
-                    </ul>
+                        {% block content %}
+                            {{ content }}
+                        {% endblock %}
+                    </main>
                 </div>
             </div>
 
-            <div class="col-9">
-                {% block title2 %}{% endblock %}
-
-                <!-- メッセージ -->
-                {% include 'includes/message.html' %}
-
-                {% block content %}
-                    {{ content }}
-                {% endblock %}
-            </div>
+            <!-- フッター -->
+            {% include 'includes/footer.html' %}
         </div>
         {% block extra_js %}{% endblock %}
     </body>
