@@ -3,7 +3,7 @@ import datetime
 
 from reportlab.lib.pagesizes import A4
 
-from .base_render import BaseRender
+from common.utils.pdf.base_render import BaseRender
 
 class SampleRender(BaseRender):
 

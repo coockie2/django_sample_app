@@ -16,7 +16,7 @@ from xhtml2pdf import pisa
 from .models import Friend, Message
 from .forms import FriendForm, MessageForm
 
-from common.utils.pdf.sample_render import SampleRender
+from hello.utils.pdf.sample_render import SampleRender
 
 # Pythonでディレクトリの上層にあるモジュールをimportするときの注意点
 # http://d.hatena.ne.jp/chlere/20110618/1308369842
