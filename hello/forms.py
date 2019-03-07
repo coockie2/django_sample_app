@@ -10,6 +10,8 @@ class FriendForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(FriendForm, self).__init__(*args, **kwargs)
         print(self.fields)
+
+        # bootstrap用の定義
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
